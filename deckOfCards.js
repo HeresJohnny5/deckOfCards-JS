@@ -1,5 +1,5 @@
-let suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
-let values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
+const suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
 
 class Deck {
   constructor() {
@@ -9,11 +9,22 @@ class Deck {
   createDeck(suits, values) {
     for (let suit of suits) {
       for (let value of values) {
-        this.deck.push(suit, value);
+        this.deck.push({ 'suit': suit, 'value': value });
       }
     }
 
+    // console.log(this.deck.length);
     return this.deck;
+  }
+
+  shuffle(deck) {
+    for (var i = deck.length - 1; i > 0; i--) {
+      let randomNum = Math.floor(Math.random() * i) + 1;
+      let tempVal = deck[randomNum];
+
+      deck[i] = tempVal;
+
+    }
   }
 }
 
