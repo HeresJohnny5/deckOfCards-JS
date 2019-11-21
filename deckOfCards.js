@@ -17,16 +17,21 @@ class Deck {
     return this.deck;
   }
 
-  shuffle(deck) {
-    for (var i = deck.length - 1; i > 0; i--) {
+  shuffleDeck() {
+    let tempVal;
+
+    for (let i = this.deck.length - 1; i > 0; i--) {
       let randomNum = Math.floor(Math.random() * i) + 1;
-      let tempVal = deck[randomNum];
 
-      deck[i] = tempVal;
-
+      tempVal = this.deck[i];
+      this.deck[i] = this.deck[randomNum];
+      this.deck[randomNum] = tempVal;
     }
+
+    return this.deck;
   }
 }
 
 let deck = new Deck();
-console.log(deck.createDeck(suits, values));
+deck.createDeck(suits, values);
+console.log(deck.shuffleDeck());
