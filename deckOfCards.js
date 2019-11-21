@@ -13,7 +13,6 @@ class Deck {
       }
     }
 
-    // console.log(this.deck.length);
     return this.deck;
   }
 
@@ -30,8 +29,27 @@ class Deck {
 
     return this.deck;
   }
+
+  deal() {
+    let hand = [];
+
+    console.log('this.deck: ', this.deck);
+    console.log('this.deck.length: ', this.deck.length);
+    console.log('**********');
+
+    while (hand.length < 52) {
+      hand.push(this.deck.shift());
+    }
+
+    console.log('hand: ', hand);
+    console.log('hand.length: ', hand.length);
+    console.log('**********');
+    console.log('this.deck.length: ', this.deck.length);
+  }
 }
 
 let deck = new Deck();
 deck.createDeck(suits, values);
-console.log(deck.shuffleDeck());
+
+let shuffledDeck = deck.shuffleDeck();
+deck.deal();
