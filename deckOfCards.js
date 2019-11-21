@@ -4,6 +4,7 @@ const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace'];
 class Deck {
   constructor() {
     this.deck = [];
+    this.hand = [];
   }
 
   createDeck(suits, values) {
@@ -31,25 +32,25 @@ class Deck {
   }
 
   deal() {
-    let hand = [];
-
-    console.log('this.deck: ', this.deck);
-    console.log('this.deck.length: ', this.deck.length);
-    console.log('**********');
-
-    while (hand.length < 52) {
-      hand.push(this.deck.shift());
+    if (this.hand.length < 52) {
+      this.hand.push(this.deck.shift());
+    } else {
+      console.log(`No cards left to deal.`);
     }
 
-    console.log('hand: ', hand);
-    console.log('hand.length: ', hand.length);
-    console.log('**********');
-    console.log('this.deck.length: ', this.deck.length);
+    // console.log('this.hand: ', this.hand);
+    // console.log('this.hand.length: ', this.hand.length);
+    // console.log('this.deck.length: ', this.deck.length);
   }
 }
 
 let deck = new Deck();
 deck.createDeck(suits, values);
-
 let shuffledDeck = deck.shuffleDeck();
-deck.deal();
+
+let counter = 0;
+while (counter < 52) {
+  deck.deal();
+  counter++;
+}
+
